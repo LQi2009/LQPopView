@@ -33,12 +33,10 @@
         pop = [[LZPopView alloc]init];
         pop.backgroundColor = [UIColor greenColor];
         pop.title = @"aaa";
-        //    pop.backgroundImageView.image = [UIImage new];
-        pop.title = @"aaaaaaaaa";
         pop.headerImage = [UIImage imageNamed:@"10633861_160536558132_2.jpg"];
         pop.subTitle = @"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb";
-        pop.showAnimateType = 1;
-        pop.hiddenAnimateType = 1;
+        pop.showAnimateType = 0;
+        pop.hiddenAnimateType = 0;
         
         pop.showBlock = ^(){
             NSLog(@"视图弹出了");
@@ -58,7 +56,7 @@
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
 @end

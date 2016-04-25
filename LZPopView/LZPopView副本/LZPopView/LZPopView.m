@@ -12,7 +12,7 @@
  *  QQ:302934443
  *
  */
-
+/*sy.luo 4.25 修改*/
 #import "LZPopView.h"
 #import "Masonry.h"
 
@@ -86,8 +86,6 @@
     [self addSubview:subTitleLabel];
     self.subTitleLabel = subTitleLabel;
     
-//    [self addConstraint:[NSLayoutConstraint constraintWithItem:image attribute:<#(NSLayoutAttribute)#> relatedBy:<#(NSLayoutRelation)#> toItem:<#(nullable id)#> attribute:<#(NSLayoutAttribute)#> multiplier:<#(CGFloat)#> constant:<#(CGFloat)#>]];
-    
     
 }
 //********** 下面的界面布局,可根据自己的需求调整 **************
@@ -120,13 +118,11 @@
         }];
         //收回的时候含有偏移量的约束需要重新设置,
         //因为self的size设置为(0,0),含有偏移量会输出约束冲突
-#warning 如果你有更好的方法控制消失时的约束冲突,还请联系我,谢谢!
+
     } else {
         [self.headerImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.left.mas_equalTo(ws);
             make.bottom.mas_equalTo(ws);
-//            make.width.mas_equalTo(@0);
-//            make.height.mas_equalTo(@0);
         }];
         
         [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -251,8 +247,9 @@
 - (void)hiddenWithAnimation {
     
     _isShow = (self.hiddenAnimateType == LZPopAnimationTypeAlpha);
-    [self layoutSubviews];
-    
+//    [self layoutSubviews];
+    _titleLabel.text = @"";
+    _subTitleLabel.text = @"";
     [self animationWithInterval:0.4 beginBlock:^{
         switch (self.hiddenAnimateType) {
             case LZPopAnimationTypeNone: {
@@ -279,7 +276,10 @@
 }
 
 - (void)animationWithInterval:(NSTimeInterval)interval beginBlock:(void(^)())beginBlock endBlock:(void(^)())endBlock{
-    [UIView animateWithDuration:interval delay:0 usingSpringWithDamping:1.0 initialSpringVelocity:0.6 options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionLayoutSubviews animations:^{
+//    usingSpringWithDamping 的范围为 0.0f 到 1.0f ，数值越小「弹簧」的振动效果越明显。
+//    initialSpringVelocity 则表示初始的速度，数值越大一开始移动越快。
+    [UIView animateWithDuration:interval delay:0 usingSpringWithDamping:1.0 initialSpringVelocity:2.0 options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionLayoutSubviews animations:^{
+
         if (beginBlock) {
             beginBlock();
         }
@@ -288,6 +288,7 @@
             endBlock();
         }
     }];
+
 }
 
 //设置frame
@@ -328,12 +329,5 @@
     self.bounds = CGRectMake(0, 0, size.width, size.height);
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end
