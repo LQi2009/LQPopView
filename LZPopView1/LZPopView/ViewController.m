@@ -33,12 +33,15 @@
         pop = [[LZPopView alloc]init];
         
         pop.backgroundImage = [UIImage imageNamed:@"弹框"];
-        pop.title = @"aaaaaaaaa";
+        pop.title = @"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb";
         pop.headerImage = [UIImage imageNamed:@"10633861_160536558132_2.jpg"];
         pop.subTitle = @"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb";
-        pop.showAnimateType = 1;
-        pop.hiddenAnimateType = 1;
-        
+        pop.showAnimateType = 0;
+        pop.hiddenAnimateType = 0;
+//        pop.popViewType = LZPopViewTypeCustom;
+//        UIView *iv = [[UIView alloc]init];
+//        iv.backgroundColor = [UIColor redColor];
+//        pop.customView = iv;
         pop.showBlock = ^(){
             NSLog(@"视图弹出了");
         };

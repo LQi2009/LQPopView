@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+//显示视图的样式
+typedef NS_ENUM(NSInteger,LZPopViewType) {
+    LZPopViewTypeValue1 = 0,//显示一个图片,一个标题,一个副标题
+    LZPopViewTypeValue2,//显示一个图片,需要设置backgroundImage
+    LZPopViewTypeValue3,//显示一段文本,需要设置title
+    LZPopViewTypeCustom,//显示一个自定义的view,需要设置customView
+};
 
+//动画的方式
 typedef NS_ENUM(NSInteger,LZPopAnimationType) {
     LZPopAnimationTypeNone = 0,
     LZPopAnimationTypeFrame,
@@ -22,11 +30,12 @@ typedef void(^LZPopBlock)();
 @property (copy,nonatomic)NSString *title;
 @property (copy,nonatomic)NSString *subTitle;
 @property (assign,nonatomic)CGFloat cornerRadius;
+@property (strong,nonatomic)UIView *customView;
 
 /**
  *  @author LQQ, 16-04-21 16:04:38
  *
- *  间隔,默认10
+ *  距离显示的位置间隔,默认10
  */
 @property (assign,nonatomic)CGFloat interval;
 /**
@@ -41,6 +50,8 @@ typedef void(^LZPopBlock)();
  *  隐藏时的动画类型,默认:LZPopAnimationTypeFrame
  */
 @property (assign,nonatomic)LZPopAnimationType hiddenAnimateType;
+
+@property (assign,nonatomic)LZPopViewType popViewType;
 /**
  *  @author LQQ, 16-04-21 16:04:15
  *

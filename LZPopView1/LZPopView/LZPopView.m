@@ -42,6 +42,8 @@
         _isTappedAutoHidden = YES;
         _isStretchBackgroundImage = YES;
         _interval = 10.0;
+        
+        [self setPopViewType:LZPopViewTypeValue1];
     }
     
     return self;
@@ -59,6 +61,8 @@
         
         [self setUI];
         [self addGesture];
+        
+        [self setPopViewType:LZPopViewTypeValue1];
     }
     
     return self;
@@ -82,7 +86,7 @@
     titleLabel.textColor = [UIColor grayColor];
     [self  addSubview:titleLabel];
     self.titleLabel = titleLabel;
-//    titleLabel.backgroundColor = [UIColor cyanColor];
+    titleLabel.backgroundColor = [UIColor cyanColor];
     
     UILabel *subTitleLabel = [[UILabel alloc]init];
     subTitleLabel.font = [UIFont systemFontOfSize:12];
@@ -92,10 +96,6 @@
     self.subTitleLabel = subTitleLabel;
 //    subTitleLabel.backgroundColor = [UIColor yellowColor];
     
-    backgroundView.frame = self.bounds;
-    image.frame = CGRectMake(10, 10, _selfSize.height - 20, _selfSize.height - 20);
-    titleLabel.frame = CGRectMake(image.bounds.size.width + 20, 10, _selfSize.width - (image.bounds.size.width + 30), 20/80.0 * _selfSize.height);
-    subTitleLabel.frame = CGRectMake(image.bounds.size.width + 20, titleLabel.bounds.origin.y + titleLabel.bounds.size.height + 16, titleLabel.bounds.size.width, _selfSize.height - (26 + titleLabel.bounds.size.height));
 }
 
 //- (void)layoutSubviews {
@@ -134,6 +134,52 @@
     _cornerRadius = cornerRadius;
     self.layer.cornerRadius = cornerRadius;
     self.layer.masksToBounds = YES;
+}
+- (void)setCustomView:(UIView *)customView {
+    if (customView) {
+        [self addSubview:customView];
+        customView.frame = self.bounds;
+        
+        _customView = customView;
+    }
+}
+
+- (void)setPopViewType:(LZPopViewType)popViewType {
+
+    switch (popViewType) {
+        case LZPopViewTypeValue1:{
+            self.backgroundImageView.frame = self.bounds;
+            self.headerImageView.frame = CGRectMake(10, 10, _selfSize.height - 20, _selfSize.height - 20);
+            self.titleLabel.frame = CGRectMake(self.headerImageView.bounds.size.width + 20, 10, _selfSize.width - (self.headerImageView.bounds.size.width + 30), 20/80.0 * _selfSize.height);
+            self.subTitleLabel.frame = CGRectMake(self.headerImageView.bounds.size.width + 20, self.titleLabel.bounds.origin.y + self.titleLabel.bounds.size.height + 16, self.titleLabel.bounds.size.width, _selfSize.height - (26 + self.titleLabel.bounds.size.height));
+        }
+            break;
+        case LZPopViewTypeValue2:{
+            [self.titleLabel removeFromSuperview];
+            [self.subTitleLabel removeFromSuperview];
+            [self.headerImageView removeFromSuperview];
+            self.backgroundImageView.frame = CGRectMake(10, 10, _selfSize.width - 20, _selfSize.height - 20);
+        }
+            break;
+        case LZPopViewTypeValue3:{
+            [self.subTitleLabel removeFromSuperview];
+            [self.headerImageView removeFromSuperview];
+            self.titleLabel.frame = CGRectMake(10, 10, _selfSize.width - 20, _selfSize.height - 20);
+            self.titleLabel.numberOfLines = 0;
+        }
+            break;
+        case LZPopViewTypeCustom:{
+            [self.subTitleLabel removeFromSuperview];
+            [self.headerImageView removeFromSuperview];
+            [self.backgroundImageView removeFromSuperview];
+            [self.titleLabel removeFromSuperview];
+        }
+            break;
+        default:
+            break;
+    }
+    
+    _popViewType = popViewType;
 }
 
 //********** end **************
@@ -213,7 +259,7 @@
 
 - (void)hiddenWithAnimation {
     
-    [self layoutSubviews];
+//    [self layoutSubviews];
     
     [self animationWithInterval:0.4 beginBlock:^{
         switch (self.hiddenAnimateType) {
