@@ -33,9 +33,9 @@
         pop = [[LZPopView alloc]init];
         
         pop.backgroundImage = [UIImage imageNamed:@"弹框"];
-        pop.title = @"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb";
+        pop.title = @"流火绯瞳";
         pop.headerImage = [UIImage imageNamed:@"10633861_160536558132_2.jpg"];
-        pop.subTitle = @"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb";
+        pop.subTitle = @"github地址:https://github.com/LQQZYY/LZPopView,感谢star支持!";
         pop.showAnimateType = 0;
         pop.hiddenAnimateType = 0;
 //        pop.popViewType = LZPopViewTypeCustom;
@@ -51,7 +51,7 @@
         pop.tapBlock = ^(){
             NSLog(@"视图被点击了");
         };
-        [pop showInView:self.view center:point];
+        [pop showInView:self.view point:point];
     } else {
         [pop hiddenFromeSuperView];
     }

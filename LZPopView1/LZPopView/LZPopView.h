@@ -11,7 +11,7 @@
 typedef NS_ENUM(NSInteger,LZPopViewType) {
     LZPopViewTypeValue1 = 0,//显示一个图片,一个标题,一个副标题
     LZPopViewTypeValue2,//显示一个图片,需要设置backgroundImage
-    LZPopViewTypeValue3,//显示一段文本,需要设置title
+    LZPopViewTypeValue3,//显示一段文本,需要设置subTitle
     LZPopViewTypeCustom,//显示一个自定义的view,需要设置customView
 };
 
@@ -91,7 +91,7 @@ typedef void(^LZPopBlock)();
  *  @param view 一般是视图要显示的父视图
  *  @param center 显示在某一点的附近,例如:按钮的中心点
  */
-- (void)showInView:(UIView*)view center:(CGPoint)center;
+- (void)showInView:(UIView*)view point:(CGPoint)center;
 /**
  *  @author LQQ, 16-04-21 16:04:07
  *

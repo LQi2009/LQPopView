@@ -86,12 +86,12 @@
     titleLabel.textColor = [UIColor grayColor];
     [self  addSubview:titleLabel];
     self.titleLabel = titleLabel;
-    titleLabel.backgroundColor = [UIColor cyanColor];
+//    titleLabel.backgroundColor = [UIColor cyanColor];
     
     UILabel *subTitleLabel = [[UILabel alloc]init];
     subTitleLabel.font = [UIFont systemFontOfSize:12];
     subTitleLabel.textColor = [UIColor lightGrayColor];
-    subTitleLabel.numberOfLines = 2;
+    subTitleLabel.numberOfLines = 0;
     [self addSubview:subTitleLabel];
     self.subTitleLabel = subTitleLabel;
 //    subTitleLabel.backgroundColor = [UIColor yellowColor];
@@ -162,10 +162,9 @@
         }
             break;
         case LZPopViewTypeValue3:{
-            [self.subTitleLabel removeFromSuperview];
+            [self.titleLabel removeFromSuperview];
             [self.headerImageView removeFromSuperview];
-            self.titleLabel.frame = CGRectMake(10, 10, _selfSize.width - 20, _selfSize.height - 20);
-            self.titleLabel.numberOfLines = 0;
+            self.subTitleLabel.frame = CGRectMake(10, 10, _selfSize.width - 20, _selfSize.height - 20);
         }
             break;
         case LZPopViewTypeCustom:{
@@ -191,7 +190,7 @@
 }
 
 #pragma mark - public method
-- (void)showInView:(UIView*)view center:(CGPoint)center{
+- (void)showInView:(UIView*)view point:(CGPoint)center{
     _superSize = view.frame.size;
     [view addSubview:self];
     
