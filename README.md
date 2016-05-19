@@ -4,7 +4,7 @@
 - 视图的样式
 
 这里我设置了四种:
-```
+```Objective-C
 //显示视图的样式
 typedef NS_ENUM(NSInteger,LZPopViewType) {
     LZPopViewTypeValue1 = 0,//显示一个图片,一个标题,一个副标题
@@ -15,14 +15,14 @@ typedef NS_ENUM(NSInteger,LZPopViewType) {
 ```
 每一种都有说明,有的需要设置对应的属性才有效果;
 提供了这个属性来进行设置:
-```
+```Objective-C
 @property (assign,nonatomic)LZPopViewType popViewType;
 ```
 
 - 动画的方式
 
 这里的动画方式,目前只加了三种:无动画,由小变大,逐渐显示
-```
+```Objective-C
 //动画的方式
 typedef NS_ENUM(NSInteger,LZPopAnimationType) {
     LZPopAnimationTypeNone = 0,
@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger,LZPopAnimationType) {
 };
 ```
 动画方式的设置我提供了两个属性进行设置,显示时的动画和消失时的动画:
-```
+```Objective-C
 /**
  *  @author LQQ, 16-04-21 16:04:33
  *
@@ -46,7 +46,7 @@ typedef NS_ENUM(NSInteger,LZPopAnimationType) {
 @property (assign,nonatomic)LZPopAnimationType hiddenAnimateType;
 ```
 视图的界面属性,我提供了下面几个:
-```
+```Objective-C
 @property (strong,nonatomic)UIImage *backgroundImage;
 @property (strong,nonatomic)UIImage *headerImage;
 @property (copy,nonatomic)NSString *title;
@@ -58,7 +58,7 @@ typedef NS_ENUM(NSInteger,LZPopAnimationType) {
 其他的属性和方法,看demo就能理解;
 控件的交互,我是才用`block`形式进行回调的,使用更方便;
 添加控件的时候,请不要使用系统的`addSubview`,请使用我提供的添加方法:
-```
+```Objective-C
 /**
  *  @author LQQ, 16-04-21 16:04:04
  *
@@ -71,7 +71,7 @@ typedef NS_ENUM(NSInteger,LZPopAnimationType) {
 - (void)showInView:(UIView*)view point:(CGPoint)center endBlock:(LZPopBlock)block;
 ```
 视图消失时和被点击时的回调,使用下面两个方法:
-```
+```Objective-C
 /**
  *  @author LQQ, 16-04-21 16:04:07
  *
@@ -91,7 +91,7 @@ typedef NS_ENUM(NSInteger,LZPopAnimationType) {
 ```
 #例子
 为便于演示,这里我直接使用了系统的`touchesBegan`方法:
-```
+```Objective-C
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     static BOOL isOK = YES;
     if (isOK) {
