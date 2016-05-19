@@ -4,7 +4,7 @@
 //
 //  Created by Artron_LQQ on 16/4/18.
 //  Copyright © 2016年 Artup. All rights reserved.
-//
+//  https://github.com/LQQZYY/LZPopView
 
 #import <UIKit/UIKit.h>
 //显示视图的样式
@@ -65,14 +65,7 @@ typedef void(^LZPopBlock)();
  */
 @property (assign,nonatomic)BOOL isStretchBackgroundImage;
 
-/**
- *  @author LQQ, 16-04-21 16:04:24
- *
- *  回调block
- */
-@property (copy,nonatomic)LZPopBlock showBlock;//出现的时候回调
-@property (copy,nonatomic)LZPopBlock hidenBlock;//消失的时候回调
-@property (copy,nonatomic)LZPopBlock tapBlock;//点击视图的时候回调
+
 /**
  *  @author LQQ, 16-04-21 16:04:42
  *
@@ -83,6 +76,7 @@ typedef void(^LZPopBlock)();
  *  @return 返回视图
  */
 - (instancetype)initWithSize:(CGSize)size;
+
 /**
  *  @author LQQ, 16-04-21 16:04:04
  *
@@ -90,12 +84,24 @@ typedef void(^LZPopBlock)();
  *
  *  @param view 一般是视图要显示的父视图
  *  @param center 显示在某一点的附近,例如:按钮的中心点
+ *  @param block 回调block
  */
-- (void)showInView:(UIView*)view point:(CGPoint)center;
+- (void)showInView:(UIView*)view point:(CGPoint)center endBlock:(LZPopBlock)block;
 /**
  *  @author LQQ, 16-04-21 16:04:07
  *
  *  隐藏弹出的视图
+ *  @param block 回调block
  */
-- (void)hiddenFromeSuperView;
+- (void)hiddenWithBlock:(LZPopBlock)block;
+
+/**
+ *  @author LQQ, 16-05-19 09:05:01
+ *
+ *  视图被点击的回调
+ *
+ *  @param block 回调block
+ */
+- (void)tapWithBlock:(LZPopBlock)block;
+
 @end

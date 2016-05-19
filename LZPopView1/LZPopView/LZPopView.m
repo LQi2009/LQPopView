@@ -9,6 +9,7 @@
  *  @author LQQ, 16-04-21 16:04:39
  *
  *  blog:http://blog.csdn.net/lqq200912408
+    https://github.com/LQQZYY/LZPopView
  *  QQ:302934443
  *
  */
@@ -20,6 +21,10 @@
     CGSize _superSize;//父视图尺寸
     
     CGSize _selfSize;//自身大小
+    
+    LZPopBlock showBlock;
+    LZPopBlock hidenBlock;
+    LZPopBlock tapBlock;
 }
 
 @property (strong,nonatomic)UIImageView *backgroundImageView;
@@ -137,6 +142,10 @@
 }
 - (void)setCustomView:(UIView *)customView {
     if (customView) {
+        for (UIView *view in self.subviews) {
+            [view removeFromSuperview];
+        }
+        
         [self addSubview:customView];
         customView.frame = self.bounds;
         
@@ -190,7 +199,9 @@
 }
 
 #pragma mark - public method
-- (void)showInView:(UIView*)view point:(CGPoint)center{
+- (void)showInView:(UIView*)view point:(CGPoint)center endBlock:(LZPopBlock)block {
+    
+    showBlock = block;
     _superSize = view.frame.size;
     [view addSubview:self];
     
@@ -216,14 +227,18 @@
     [self showWithAnimation];
 }
 
-- (void)hiddenFromeSuperView {
+- (void)hiddenWithBlock:(LZPopBlock)block {
+    hidenBlock = block;
     [self hiddenWithAnimation];
 }
 
+- (void)tapWithBlock:(LZPopBlock)block {
+    tapBlock = block;
+}
 #pragma mark - private method
 - (void)tap:(UITapGestureRecognizer*)tap {
-    if (self.tapBlock) {
-        self.tapBlock();
+    if (tapBlock) {
+        tapBlock();
     }
     
     if (self.isTappedAutoHidden) {
@@ -250,8 +265,8 @@
                 break;
         }
     } endBlock:^{
-        if (self.showBlock) {
-            self.showBlock();
+        if (showBlock) {
+            showBlock();
         }
     }];
 }
@@ -279,8 +294,8 @@
         }
     } endBlock:^{
         [self removeFromSuperview];
-        if (self.hidenBlock) {
-            self.hidenBlock();
+        if (hidenBlock) {
+            hidenBlock();
         }
     }];
 }
