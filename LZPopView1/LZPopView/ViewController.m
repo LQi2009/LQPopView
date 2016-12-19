@@ -47,15 +47,6 @@
         CGPoint point = [touch locationInView:self.view];
         
         pop = [[LZPopView alloc]init];
-<<<<<<< HEAD:LZPopView/LZPopView副本/LZPopView/ViewController.m
-        pop.backgroundColor = [UIColor greenColor];
-        pop.title = @"aaa";
-        pop.headerImage = [UIImage imageNamed:@"10633861_160536558132_2.jpg"];
-        pop.subTitle = @"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb";
-        pop.showAnimateType = 0;
-        pop.hiddenAnimateType = 0;
-=======
->>>>>>> LQQZYY/master:LZPopView1/LZPopView/ViewController.m
         
         pop.backgroundImage = [UIImage imageNamed:@"弹框"];
         pop.title = @"流火绯瞳";
@@ -80,7 +71,7 @@
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
+    // Dispose of any resources that can be recreated.
 }
 
 @end

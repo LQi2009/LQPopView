@@ -99,6 +99,7 @@
     subTitleLabel.numberOfLines = 0;
     [self addSubview:subTitleLabel];
     self.subTitleLabel = subTitleLabel;
+<<<<<<< HEAD:LZPopView1/LZPopView/LZPopView.m
 <<<<<<< HEAD:LZPopView/LZPopView副本/LZPopView/LZPopView.m
     
     
@@ -159,10 +160,18 @@
 //    subTitleLabel.backgroundColor = [UIColor yellowColor];
     
 }
+=======
+//    subTitleLabel.backgroundColor = [UIColor yellowColor];
+    
+}
+>>>>>>> LQQZYY/master:LZPopView1/LZPopView/LZPopView.m
 
 //- (void)layoutSubviews {
 //}
 
+<<<<<<< HEAD:LZPopView1/LZPopView/LZPopView.m
+>>>>>>> LQQZYY/master:LZPopView1/LZPopView/LZPopView.m
+=======
 >>>>>>> LQQZYY/master:LZPopView1/LZPopView/LZPopView.m
 #pragma mark - 重写setter
 - (void)setBackgroundImage:(UIImage *)backgroundImage {
@@ -331,12 +340,15 @@
 
 - (void)hiddenWithAnimation {
     
+<<<<<<< HEAD:LZPopView1/LZPopView/LZPopView.m
 <<<<<<< HEAD:LZPopView/LZPopView副本/LZPopView/LZPopView.m
     _isShow = (self.hiddenAnimateType == LZPopAnimationTypeAlpha);
 //    [self layoutSubviews];
     _titleLabel.text = @"";
     _subTitleLabel.text = @"";
 =======
+=======
+>>>>>>> LQQZYY/master:LZPopView1/LZPopView/LZPopView.m
 //    [self layoutSubviews];
     
 >>>>>>> LQQZYY/master:LZPopView1/LZPopView/LZPopView.m
@@ -417,8 +429,11 @@
     }
 }
 
+<<<<<<< HEAD:LZPopView1/LZPopView/LZPopView.m
 <<<<<<< HEAD:LZPopView/LZPopView副本/LZPopView/LZPopView.m
 =======
+=======
+>>>>>>> LQQZYY/master:LZPopView1/LZPopView/LZPopView.m
 - (void)dealloc {
     NSLog(@"dealloc");
 }
