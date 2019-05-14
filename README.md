@@ -1,9 +1,13 @@
-#LZPopView
+# LZPopView
+
 一个自定义的弹出视图,用于展示一段话,或者一段图文详情;视图的弹出带有动画效果,使用方便,并且支持自定义视图;
-#说明
+
+# 说明
+
 - 视图的样式
 
 这里我设置了四种:
+
 ```Objective-C
 //显示视图的样式
 typedef NS_ENUM(NSInteger,LZPopViewType) {
@@ -13,8 +17,10 @@ typedef NS_ENUM(NSInteger,LZPopViewType) {
     LZPopViewTypeCustom,//显示一个自定义的view,需要设置customView
 };
 ```
+
 每一种都有说明,有的需要设置对应的属性才有效果;
 提供了这个属性来进行设置:
+
 ```Objective-C
 @property (assign,nonatomic)LZPopViewType popViewType;
 ```
@@ -22,6 +28,7 @@ typedef NS_ENUM(NSInteger,LZPopViewType) {
 - 动画的方式
 
 这里的动画方式,目前只加了三种:无动画,由小变大,逐渐显示
+
 ```Objective-C
 //动画的方式
 typedef NS_ENUM(NSInteger,LZPopAnimationType) {
@@ -30,7 +37,9 @@ typedef NS_ENUM(NSInteger,LZPopAnimationType) {
     LZPopAnimationTypeAlpha,
 };
 ```
+
 动画方式的设置我提供了两个属性进行设置,显示时的动画和消失时的动画:
+
 ```Objective-C
 /**
  *  @author LQQ, 16-04-21 16:04:33
@@ -45,7 +54,9 @@ typedef NS_ENUM(NSInteger,LZPopAnimationType) {
  */
 @property (assign,nonatomic)LZPopAnimationType hiddenAnimateType;
 ```
+
 视图的界面属性,我提供了下面几个:
+
 ```Objective-C
 @property (strong,nonatomic)UIImage *backgroundImage;
 @property (strong,nonatomic)UIImage *headerImage;
@@ -54,10 +65,12 @@ typedef NS_ENUM(NSInteger,LZPopAnimationType) {
 @property (assign,nonatomic)CGFloat cornerRadius;
 @property (strong,nonatomic)UIView *customView;
 ```
+
 用于设置显示的内容;
 其他的属性和方法,看demo就能理解;
 控件的交互,我是才用`block`形式进行回调的,使用更方便;
 添加控件的时候,请不要使用系统的`addSubview`,请使用我提供的添加方法:
+
 ```Objective-C
 /**
  *  @author LQQ, 16-04-21 16:04:04
@@ -70,7 +83,9 @@ typedef NS_ENUM(NSInteger,LZPopAnimationType) {
  */
 - (void)showInView:(UIView*)view point:(CGPoint)center endBlock:(LZPopBlock)block;
 ```
+
 视图消失时和被点击时的回调,使用下面两个方法:
+
 ```Objective-C
 /**
  *  @author LQQ, 16-04-21 16:04:07
@@ -89,8 +104,11 @@ typedef NS_ENUM(NSInteger,LZPopAnimationType) {
  */
 - (void)tapWithBlock:(LZPopBlock)block;
 ```
-#例子
+
+# 例子
+
 为便于演示,这里我直接使用了系统的`touchesBegan`方法:
+
 ```Objective-C
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     static BOOL isOK = YES;
@@ -122,12 +140,15 @@ typedef NS_ENUM(NSInteger,LZPopAnimationType) {
     isOK = !isOK;
 }
 ```
+
 实际使用时,一般是显示在某个按键的附近,传入合适的`center`值即可;
 
-####如果对你有帮助,请右上角`Star`或者`Fork`支持一下,感谢!!
-#####如果使用中有bug,请留言,我会第一时间修改
-#####如果有其他的需求或想法,也可以一同讨论
-#####[我的博客](http://blog.csdn.net/lqq200912408)
-#效果图
+#### 如果对你有帮助,请右上角`Star`或者`Fork`支持一下,感谢!!
+##### 如果使用中有bug,请留言,我会第一时间修改
+##### 如果有其他的需求或想法,也可以一同讨论
+##### [我的博客](http://blog.csdn.net/lqq200912408)
+# 效果图
+
 ![](https://github.com/LQQZYY/LZPopView/blob/master/qqq.gif)
-#(完)
+
+# (完)
